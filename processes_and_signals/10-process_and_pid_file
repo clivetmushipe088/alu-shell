@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Function to handle SIGTERM and SIGQUIT signals
+pidfile="/var/run/myscript.pid"
 cleanup_handler() {
     echo "Deleting PID file and terminating script..."
-    rm -f "/var/run/myscript.pid"
+    rm -f "$pidfile"
     exit 0
 }
 
@@ -22,7 +23,7 @@ trap sigint_handler SIGINT
 trap sigterm_handler SIGTERM
 
 # Get current script's PID and write it to the PID file
-echo "$$" > /var/run/myscript.pid
+echo "$$" > "$pidfile"
 
 # Display messages indefinitely
 while true; do
