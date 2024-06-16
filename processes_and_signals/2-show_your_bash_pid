@@ -1,0 +1,6 @@
+#!/bin/bash
+# Display lines containing the word "bash" to find the PID of the Bash process
+# shellcheck disable=SC2009
+# Using ps command to find lines containing "bash"
+ps aux | grep bash | grep -v grep
+
