@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Stop the process named 7-highlander using pkill
+
+# Define the process name
+process_name="7-highlander"
+
+# Use pkill to terminate the process
+pkill -f "$process_name"
+
+# Check if the process is still running
+if pgrep -f "$process_name" >/dev/null; then
+    echo "Process '$process_name' could not be stopped."
+else
+    echo "Process '$process_name' has been stopped successfully."
+fi
+
