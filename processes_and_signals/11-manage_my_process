@@ -12,7 +12,11 @@ start() {
         echo "Starting manage_my_process..."
         nohup "$MANAGE_SCRIPT" >/dev/null 2>&1 &
         echo $! > "$PID_FILE"
-        echo "manage_my_process started."
+        if [ -f "$PID_FILE" ]; then
+            echo "manage_my_process started."
+        else
+            echo "Failed to start manage_my_process."
+        fi
     fi
 }
 
@@ -53,4 +57,3 @@ case "$1" in
 esac
 
 exit 0
-
