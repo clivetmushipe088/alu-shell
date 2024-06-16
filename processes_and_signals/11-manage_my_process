@@ -20,7 +20,7 @@ start() {
 stop() {
     if [ -f "$PID_FILE" ]; then
         echo "Stopping manage_my_process..."
-        kill $(cat "$PID_FILE")
+        kill "$(cat "$PID_FILE")"
         rm -f "$PID_FILE"
         echo "manage_my_process stopped."
     else
