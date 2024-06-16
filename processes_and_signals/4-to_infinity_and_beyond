@@ -1,28 +1,8 @@
 #!/usr/bin/env bash
-# Display PID and process name of processes whose name contains the word "bash"
-# shellcheck disable=SC2009
-# Function to display "To infinity and beyond" indefinitely with a 2-second pause
-display_infinity() {
-    while :
-    do
-        echo "To infinity and beyond"
-        sleep 2
-    done
-}
-# Main script starts here
-# Find PID of the current Bash session
-current_bash_pid=$$
-current_bash_name=$(ps -o comm= -p "$current_bash_pid")
-# Find PID of the script "3-show_your_bash_pid_made_easy"
-script_name="3-show_your_bash_pid_made_easy"
-script_pid=$(pgrep -f "$script_name")
-script_pid_arr=($script_pid)  # Convert space-separated string to array
-# Loop through each PID found by pgrep and display details
-for pid in "${script_pid_arr[@]}"; do
-    # Using ps to get process details for each PID
-    script_name=$(ps -o comm= -p "$pid")
-    echo "For the current iteration: bash PID is $current_bash_pid and that the $script_name script PID is $pid"
+# Display "To infinity and beyond" indefinitely with a 2-second pause between iterations
+
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
 done
-# Call the function to display "To infinity and beyond"
-display_infinity
 
