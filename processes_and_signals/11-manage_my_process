@@ -9,13 +9,12 @@ start() {
     if [ -f "$PID_FILE" ]; then
         echo "manage_my_process is already running."
     else
-        echo "Starting manage_my_process..."
-        nohup "$MANAGE_SCRIPT" >/dev/null 2>&1 &
+        echo -n "Starting manage_my_process..."   # Adjusted this line
+        nohup "$MANAGE_SCRIPT" >/dev/null 2>&1 &  # Redirected output to /dev/null
         echo $! > "$PID_FILE"
-        echo "manage_my_process started."
+        echo " started."                         # Appended " started."
     fi
 }
-
 # Function to stop manage_my_process
 stop() {
     if [ -f "$PID_FILE" ]; then
