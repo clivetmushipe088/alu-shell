@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # Display PID and process name of processes whose name contains the word "bash"
+# shellcheck disable=SC2009
 # Using pgrep to find PIDs of processes
-pids=$(pgrep -f bash)
+pids=$(pgrep -d ' ' -f bash)
 # Loop through each PID found by pgrep and display details
-for pid in $pids; do
+while IFS= read -r pid; do
     # Using ps to get process details for each PID
-    process_name=$(ps -p $pid -o comm=)
+    process_name=$(ps -o comm= -p "$pid")
     echo "PID: $pid, Process Name: $process_name"
-done
+done <<< "$pids"
 
