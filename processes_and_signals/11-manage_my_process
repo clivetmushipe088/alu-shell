@@ -17,10 +17,10 @@ start() {
 # Function to stop manage_my_process
 stop() {
     if [ -f "$PID_FILE" ]; then
-        echo "Stopping manage_my_process..."
+	 echo -n "Stopping manage_my_process..."
         kill "$(cat "$PID_FILE")"
         rm -f "$PID_FILE"
-        echo "manage_my_process stopped."
+	echo " stopped."
     else
         echo "manage_my_process is not running."
     fi
