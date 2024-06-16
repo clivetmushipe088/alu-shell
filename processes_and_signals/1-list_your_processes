@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
-
 # Display a list of currently running processes
 echo "Listing all running processes:"
-
 # Using ps command with options to meet the requirements
 ps axjf --forest
 
